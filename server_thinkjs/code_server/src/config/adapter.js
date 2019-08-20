@@ -30,19 +30,19 @@ exports.cache = {
 exports.model = {
   type: 'mysql',
   common: {
-    logConnect: isDev,
-    logSql: isDev,
+    logConnect: true,
+    logSql: true,
     logger: msg => think.logger.info(msg)
   },
   mysql: {
     handle: mysql,
-    database: '',
-    prefix: 'think_',
+    database: 'coder_db',
+    prefix: ' ',    //数据库表名的前缀
     encoding: 'utf8',
     host: '127.0.0.1',
-    port: '',
+    port: '3306',
     user: 'root',
-    password: 'root',
+    password: 'password',
     dateStrings: true
   }
 };

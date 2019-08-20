@@ -23,6 +23,26 @@
       <p class="index_font">gray</p>
       </div>
     </div>
+    <div class="line"></div>
+    <div style="margin-top:20px;">
+      <div>
+        <el-radio v-model="radio" label="1">选项A</el-radio>
+        <el-radio v-model="radio" label="2">选项B</el-radio>
+      </div>
+      <div>
+      <el-radio-group v-model="radio1" style="margin:20px;">
+        <el-radio-button label="上海"></el-radio-button>
+        <el-radio-button label="北京"></el-radio-button>
+        <el-radio-button label="广州"></el-radio-button>
+        <el-radio-button label="深圳"></el-radio-button>
+      </el-radio-group>
+    </div>
+    <div>
+      <el-input-number v-model="num" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number>
+    </div>
+    <el-tag v-for="tag in tags" :key="tag.name" closable :type="tag.type" style="margin:20px 3px 0 3px;">{{tag.name}}</el-tag>
+    </div>
+    
   </div>
 </template>
 
@@ -33,6 +53,23 @@ export default {
     return {
       id_input: '',
       pwd_input: '',
+      radio:'1',
+      radio1:'1',
+      num:'1',
+      tags:[
+        {
+          name:'标签1',
+          type:''
+        },
+        {
+          name:'标签2',
+          type:'success'
+        },
+        {
+          name:'守望先锋',
+          type:'overwatch'
+        }
+      ]
     }
   },
   methods: {
@@ -46,6 +83,9 @@ export default {
         var data = res.body
         console.log(data)
       })
+    },
+    handleChange:function(value){
+      console.log(value)
     }
     
   }
@@ -142,5 +182,13 @@ a {
   display:flex;
   justify-content:center;
   align-items:center;
+}
+.line{
+  padding:0 20px 0;
+  margin:20px 30px 0 30px;
+  line-height:10px;
+  height:2px;
+  background-color:#ddd;
+  text-align:center;
 }
 </style>
